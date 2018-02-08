@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hdliu.wxems.dao.TTeacherClassMapper">
+  <resultMap id="BaseResultMap" type="com.hdliu.wxems.entity.TTeacherClass">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="teacher_subject_id" jdbcType="INTEGER" property="teacherSubjectId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="classes" jdbcType="VARCHAR" property="classes" />
+    <result column="push_switch" jdbcType="BIT" property="pushSwitch" />
+    <result column="passageway" jdbcType="VARCHAR" property="passageway" />
+    <result column="sendkey" jdbcType="VARCHAR" property="sendkey" />
+    <result column="last_push" jdbcType="TIMESTAMP" property="lastPush" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hdliu.wxems.entity.TTeacherClassWithBLOBs">
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+    <result column="syllabus" jdbcType="LONGVARCHAR" property="syllabus" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, teacher_subject_id, name, classes, push_switch, passageway, sendkey, last_push
+  </sql>
+  <sql id="Blob_Column_List">
+    introduction, syllabus
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.hdliu.wxems.entity.TTeacherClassExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_teacher_class
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.hdliu.wxems.entity.TTeacherClassExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_teacher_class
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_teacher_class
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_teacher_class
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hdliu.wxems.entity.TTeacherClassExample">
+    delete from t_teacher_class
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hdliu.wxems.entity.TTeacherClassWithBLOBs">
+    insert into t_teacher_class (id, teacher_subject_id, name, 
+      classes, push_switch, passageway, 
+      sendkey, last_push, introduction, 
+      syllabus)
+    values (#{id,jdbcType=INTEGER}, #{teacherSubjectId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{classes,jdbcType=VARCHAR}, #{pushSwitch,jdbcType=BIT}, #{passageway,jdbcType=VARCHAR}, 
+      #{sendkey,jdbcType=VARCHAR}, #{lastPush,jdbcType=TIMESTAMP}, #{introduction,jdbcType=LONGVARCHAR}, 
+      #{syllabus,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hdliu.wxems.entity.TTeacherClassWithBLOBs">
+    insert into t_teacher_class
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="teacherSubjectId != null">
+        teacher_subject_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="classes != null">
+        classes,
+      </if>
+      <if test="pushSwitch != null">
+        push_switch,
+      </if>
+      <if test="passageway != null">
+        passageway,
+      </if>
+      <if test="sendkey != null">
+        sendkey,
+      </if>
+      <if test="lastPush != null">
+        last_push,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="syllabus != null">
+        syllabus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="teacherSubjectId != null">
+        #{teacherSubjectId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="pushSwitch != null">
+        #{pushSwitch,jdbcType=BIT},
+      </if>
+      <if test="passageway != null">
+        #{passageway,jdbcType=VARCHAR},
+      </if>
+      <if test="sendkey != null">
+        #{sendkey,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPush != null">
+        #{lastPush,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="syllabus != null">
+        #{syllabus,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hdliu.wxems.entity.TTeacherClassExample" resultType="java.lang.Long">
+    select count(*) from t_teacher_class
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_teacher_class
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.teacherSubjectId != null">
+        teacher_subject_id = #{record.teacherSubjectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classes != null">
+        classes = #{record.classes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pushSwitch != null">
+        push_switch = #{record.pushSwitch,jdbcType=BIT},
+      </if>
+      <if test="record.passageway != null">
+        passageway = #{record.passageway,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendkey != null">
+        sendkey = #{record.sendkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastPush != null">
+        last_push = #{record.lastPush,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.introduction != null">
+        introduction = #{record.introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.syllabus != null">
+        syllabus = #{record.syllabus,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update t_teacher_class
+    set id = #{record.id,jdbcType=INTEGER},
+      teacher_subject_id = #{record.teacherSubjectId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      classes = #{record.classes,jdbcType=VARCHAR},
+      push_switch = #{record.pushSwitch,jdbcType=BIT},
+      passageway = #{record.passageway,jdbcType=VARCHAR},
+      sendkey = #{record.sendkey,jdbcType=VARCHAR},
+      last_push = #{record.lastPush,jdbcType=TIMESTAMP},
+      introduction = #{record.introduction,jdbcType=LONGVARCHAR},
+      syllabus = #{record.syllabus,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_teacher_class
+    set id = #{record.id,jdbcType=INTEGER},
+      teacher_subject_id = #{record.teacherSubjectId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      classes = #{record.classes,jdbcType=VARCHAR},
+      push_switch = #{record.pushSwitch,jdbcType=BIT},
+      passageway = #{record.passageway,jdbcType=VARCHAR},
+      sendkey = #{record.sendkey,jdbcType=VARCHAR},
+      last_push = #{record.lastPush,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hdliu.wxems.entity.TTeacherClassWithBLOBs">
+    update t_teacher_class
+    <set>
+      <if test="teacherSubjectId != null">
+        teacher_subject_id = #{teacherSubjectId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        classes = #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="pushSwitch != null">
+        push_switch = #{pushSwitch,jdbcType=BIT},
+      </if>
+      <if test="passageway != null">
+        passageway = #{passageway,jdbcType=VARCHAR},
+      </if>
+      <if test="sendkey != null">
+        sendkey = #{sendkey,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPush != null">
+        last_push = #{lastPush,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="syllabus != null">
+        syllabus = #{syllabus,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hdliu.wxems.entity.TTeacherClassWithBLOBs">
+    update t_teacher_class
+    set teacher_subject_id = #{teacherSubjectId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      classes = #{classes,jdbcType=VARCHAR},
+      push_switch = #{pushSwitch,jdbcType=BIT},
+      passageway = #{passageway,jdbcType=VARCHAR},
+      sendkey = #{sendkey,jdbcType=VARCHAR},
+      last_push = #{lastPush,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR},
+      syllabus = #{syllabus,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hdliu.wxems.entity.TTeacherClass">
+    update t_teacher_class
+    set teacher_subject_id = #{teacherSubjectId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      classes = #{classes,jdbcType=VARCHAR},
+      push_switch = #{pushSwitch,jdbcType=BIT},
+      passageway = #{passageway,jdbcType=VARCHAR},
+      sendkey = #{sendkey,jdbcType=VARCHAR},
+      last_push = #{lastPush,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
