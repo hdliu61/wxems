@@ -19,9 +19,11 @@
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/themes/flat-blue.css">
+    <#--<link rel="stylesheet" type="text/css" href="css/themes/flat-blue.css">-->
 </head>
 
 <body class="flat-blue">
+<#--<body class="flat-blue">-->
     <div class="app-container">
         <div class="row content-container">
             <nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -31,7 +33,7 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li class="active">Dashboard</li>
+                            <li class="active" id="innertitle">我的首页</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -63,8 +65,8 @@
                                         <h4 class="username">Emily Hart</h4>
                                         <p>emily_hart@email.com</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                            <a href="#" class="btn btn-default"><i class="fa fa-user"></i> Profile</a>
+                                            <a href="logout" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</a>
                                         </div>
                                     </div>
                                 </li>
@@ -131,10 +133,11 @@
                     <!-- /.navbar-collapse -->
                 </nav>
             </div>
-            <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >免费网站模板</a></div>
             <!-- Main Content -->
             <div class="container-fluid">
-                
+                <div class="side-body padding-top">
+                    <iframe src="https://www.sina.com" id="innercontent" frameborder="0" scrolling="no" marginheight="0" height="500px" width="100%" name="innercontent" onload=""></iframe>
+                </div>
             </div>
         </div>
         <footer class="app-footer">

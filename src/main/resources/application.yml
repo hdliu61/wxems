@@ -21,3 +21,13 @@ spring:
       min-idle: 10
       max-active: 200
       max-wait: 1000
+
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: DEBUG
+    hibernate: ERROR
+#  path: ${catalina.home}/logs/configmanager-DetailLog.log

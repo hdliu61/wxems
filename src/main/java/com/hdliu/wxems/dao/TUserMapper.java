@@ -20,6 +20,8 @@ public interface TUserMapper {
 
     TUser selectByPrimaryKey(Integer id);
 
+    TUser selectBySn(String sn);
+
     int updateByExampleSelective(@Param("record") TUser record, @Param("example") TUserExample example);
 
     int updateByExample(@Param("record") TUser record, @Param("example") TUserExample example);
