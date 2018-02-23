@@ -7,22 +7,33 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-/**
- * Created by yangyibo on 17/1/18.
- */
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * 注册UserDetailsService 的bean
+     * @return
+     */
     @Bean
-    UserDetailsService customUserService(){ //注册UserDetailsService 的bean
+    UserDetailsService customUserService(){
         return new CustomUserService();
     }
+
+    /**
+     * user Details Service验证
+     * @return
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserService()); //user Details Service验证
-
+        auth.userDetailsService(customUserService());
     }
+
+    /**
+     * Spring Security 配置
+     * @return
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
