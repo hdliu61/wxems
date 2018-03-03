@@ -384,65 +384,6 @@ public class TCollegeExample {
             return (Criteria) this;
         }
 
-        public Criteria andAdministratorIsNull() {
-            addCriterion("administrator is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorIsNotNull() {
-            addCriterion("administrator is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorEqualTo(Integer value) {
-            addCriterion("administrator =", value, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorNotEqualTo(Integer value) {
-            addCriterion("administrator <>", value, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorGreaterThan(Integer value) {
-            addCriterion("administrator >", value, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorGreaterThanOrEqualTo(Integer value) {
-            addCriterion("administrator >=", value, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorLessThan(Integer value) {
-            addCriterion("administrator <", value, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorLessThanOrEqualTo(Integer value) {
-            addCriterion("administrator <=", value, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorIn(List<Integer> values) {
-            addCriterion("administrator in", values, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorNotIn(List<Integer> values) {
-            addCriterion("administrator not in", values, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorBetween(Integer value1, Integer value2) {
-            addCriterion("administrator between", value1, value2, "administrator");
-            return (Criteria) this;
-        }
-
-        public Criteria andAdministratorNotBetween(Integer value1, Integer value2) {
-            addCriterion("administrator not between", value1, value2, "administrator");
-            return (Criteria) this;
-        }
     }
 
     /**

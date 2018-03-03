@@ -181,7 +181,7 @@ a:hover {
         font-size: 1.8em; }
 
 .app-container {
-  min-height: 100%;
+  min-height: 95%;
   position: relative;
   padding-bottom: 30px; }
   .app-container .app-footer {
@@ -210,6 +210,7 @@ a:hover {
       width: 60px;
       height: 100%;
       -webkit-transition: all 0.25s;
+      top: 0px;
       transition: all 0.25s; }
       .app-container .content-container .side-menu .navbar-header {
         width: 100%;
@@ -299,6 +300,14 @@ a:hover {
       padding-top: 70px; }
     .app-container .content-container .side-body.padding-top {
       padding-top: 60px; }
+
+    .inner-container{
+      padding-top: 20px;
+    }
+
+    .myrow{
+      margin-right: 15px;
+    }
 
 .app-container.expanded .app-footer {
   left: 250px; }
@@ -581,7 +590,7 @@ a:hover {
       margin-top: 15px; }
 
 body.login-page {
-  background: url(../../img/app-header-bg.jpg) no-repeat center center fixed;
+  background: url(../img/app-header-bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -606,8 +615,9 @@ body.login-page {
       margin-bottom: 1.2em;
       font-size: 1.5em; }
     body.login-page .login-form .login-body {
+      opacity: 0.85;
       padding: 1.5em;
-      border-radius: 1px; }
+      border-radius: 5px; }
     body.login-page .login-form input {
       margin-bottom: 0.8em;
       margin-top: 0.5em;
@@ -626,6 +636,13 @@ body.login-page {
     text-align: right;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px; }
+  .login-title{
+    font-size: 1.2em;
+    -webkit-text-shadow:0 0 10px #a96c08;
+    -moz-text-shadow:0 0 10px #a96c08;
+    -o-text-shadow:0 0 10px #a96c08;
+    text-shadow:0 0 10px #a96c08;
+  }
 
 @media (max-width: 768px) {
   body.login-page .login-form .login-header {
@@ -1031,7 +1048,7 @@ body.login-page {
     padding-top: 50px;
     padding-bottom: 20px; }
   .landing-page .app-content-b.feature-1 {
-    background-image: url("img/default_avatar.jpg");
+    background-image: url("../img/default_avatar.jpg");
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;

@@ -1,7 +1,12 @@
 server:
   port: 8080
   tomcat:
-    uri-encoding: UTF-8
+
+  compression:  #GZip压缩
+    enabled: true
+    min-response-size: 4096
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/x-javascript,text/css,text/javascript
+
 
 spring:
   datasource:
@@ -30,4 +35,5 @@ logging:
       springframework:
         web: DEBUG
     hibernate: ERROR
+
 #  path: ${catalina.home}/logs/configmanager-DetailLog.log

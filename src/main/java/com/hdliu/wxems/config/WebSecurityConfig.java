@@ -36,13 +36,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.headers().frameOptions().disable()
+                .and()
+                .authorizeRequests()
+                .antMatchers( "/js/**", "/css/**" , "/img/**").permitAll()
+                .antMatchers( "/admin/**").hasRole("ADMIN" )
+                .antMatchers( "/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
                 .anyRequest().authenticated() //任何请求,登录后可以访问
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?error")
-                .permitAll() //登录页面用户任意访问
+                .formLogin().loginPage("/login").failureUrl("/login?error").permitAll() //登录页面用户任意访问
                 .and()
                 .csrf().disable()
                 .logout().permitAll(); //注销行为任意访问

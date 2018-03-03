@@ -26,10 +26,6 @@ public class TCollege implements Serializable {
      */
     private Integer dean;
 
-    /**
-     * 学院管理员
-     */
-    private Integer administrator;
 
     private static final long serialVersionUID = 1L;
 
@@ -65,13 +61,6 @@ public class TCollege implements Serializable {
         this.dean = dean;
     }
 
-    public Integer getAdministrator() {
-        return administrator;
-    }
-
-    public void setAdministrator(Integer administrator) {
-        this.administrator = administrator;
-    }
 
     @Override
     public boolean equals(Object that) {
@@ -88,8 +77,7 @@ public class TCollege implements Serializable {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
-            && (this.getDean() == null ? other.getDean() == null : this.getDean().equals(other.getDean()))
-            && (this.getAdministrator() == null ? other.getAdministrator() == null : this.getAdministrator().equals(other.getAdministrator()));
+            && (this.getDean() == null ? other.getDean() == null : this.getDean().equals(other.getDean()));
     }
 
     @Override
@@ -100,7 +88,6 @@ public class TCollege implements Serializable {
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
         result = prime * result + ((getDean() == null) ? 0 : getDean().hashCode());
-        result = prime * result + ((getAdministrator() == null) ? 0 : getAdministrator().hashCode());
         return result;
     }
 
@@ -114,7 +101,6 @@ public class TCollege implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", description=").append(description);
         sb.append(", dean=").append(dean);
-        sb.append(", administrator=").append(administrator);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
